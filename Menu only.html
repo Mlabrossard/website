@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>side bar</title>
+  <style>
+
+   body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff; /* White background */
+    color: #333;
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+  }
+
+   .menu-container {
+      position: fixed; /* Fixed position to keep it in view */
+      top: 60px; /* Space from the top navigation */
+      left: 0px; /* Start hidden off-screen */
+      width: 250px; /* Menu width */
+      height: 100%; /* Full viewport height */
+      background-color: rgba(243, 243, 243, 0.185); /* Semi-transparent background */
+      border-right: 2px solid rgba(207, 207, 207, 0.014); /* Light border for delimitation */
+      transition: left 0.3s ease; /* Smooth transition for menu visibility */
+      z-index: 900; /* Ensure it's above other content */
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+ }
+    
+   .menu-container ul {
+      list-style-type: none; /* Remove bullet points */
+      padding: 0;
+      margin: 0;
+ }
+
+   .menu-container li {
+      margin: 10px 0; /* Space between menu items */
+ }
+
+   .menu-container a {
+      text-decoration: none; /* Remove underline */
+      color: #333; /* Text color */
+      font-family: 'Arial', sans-serif; /* Use Arial font */
+      font-size: 16px; /* Font size matching the content */
+ }
+
+   .menu-container a:hover {
+      color: #000; /* Change color on hover */
+ }
+
+   .menu-toggle {
+      position: fixed; /* Fixed position */
+      bottom: 20px; /* Space from the bottom */
+      left: 20px; /* Space from the left edge */
+      background-color: #333; /* Button background */
+      color: #fff; /* Button text color */
+      border: none; /* Remove default border */
+      padding: 10px 20px; /* Padding inside button */
+      cursor: pointer; /* Cursor for clickable button */
+      z-index: 1000; /* Ensure it stays above other content */
+      border-radius: 5px; /* Rounded corners */
+ }
+
+   .menu-container li.hovered a {
+        font-weight: bold;
+ }
+
+</style>
+</head>
+<body>
+  <button class="menu-toggle">☰</button>
+
+  <div class="menu-container" id="menu">
+    <ul>
+      <li data-title="CallMe"><a href="contentcallme.html">CallMe</a></li> 
+      <li data-title="Endgame"><a href="contentendgame.html">Endgame</a></li>
+      <li data-title="Himalaya Fancam"><a href="contenthimalaya.html">Himalaya Fancam</a></li>
+      <li data-title="Scroll"><a href="contentscroll.html">Scroll</a></li>
+      <li data-title="4All"><a href="content4all.html">4All</a></li>
+      <li data-title="Frame"><a href="contentframe.html">Frame</a></li>
+      <li data-title="Episode"><a href="contentepsiode.html">Episode</a></li>
+      <li data-title="MO"><a href="contentmo.html">MO</a></li>
+      <li data-title="Extras"><a href="contentextra.html">Extras</a></li>
+    </ul>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuButton = document.querySelector('.menu-toggle');
+      const menu = document.getElementById('menu');
+      let isMenuVisible = false;
+
+      menuButton.addEventListener('click', () => {
+        isMenuVisible = !isMenuVisible;
+        menu.style.left = isMenuVisible ? '0' : '-250px';
+      });
+
+      // Make menu draggable
+      let isDragging = false;
+      let startX, startY, initialLeft;
+
+      menu.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        startX = e.clientX;
+        startY = e.clientY;
+        initialLeft = parseFloat(window.getComputedStyle(menu).left) || 0;
+        menu.style.cursor = 'grabbing';
+        e.preventDefault();
+      });
+
+      document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const dx = e.clientX - startX;
+        menu.style.left = `${Math.min(0, initialLeft + dx)}px`;
+      });
+
+      document.addEventListener('mouseup', () => {
+        if (isDragging) {
+          isDragging = false;
+          menu.style.cursor = 'grab';
+        }
+      });
+
+    });
+  </script>
+  </body>

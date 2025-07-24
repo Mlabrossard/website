@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contentepsiode</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+  @media (max-width: 600px) {
+    .image-container {
+      max-width: 30%;
+      min-width: 40%;
+    }
+  }
+</style>
+
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="navigation">
+      <h1 class="mlb-link">
+        <a href="index.html">
+          <img src="image/Web/Mia.png" alt="MLB Logo" style="height: 40px;">
+        </a></h1>
+        <div class="nav-links">
+            <a href="work.html">Works</a> <a href="about.html">About</a>
+        </div>
+    </div>
+    <div class="content">
+        <!-- Invisible boundaries -->
+        <div class="boundary top"></div>
+        <div class="boundary bottom"></div>
+        <div class="boundary left"></div>
+        <div class="boundary right"></div>
+        
+    <img src="image/Web/ColorBlock.png" class="image-container" alt="2023 Color block 10th edition - Stickers bundle" id="ColorBlock" style="width: 25%; height: auto; opacity: 0;">
+    <img src="image/Web/INSTA-PART2.jpg" class="image-container" alt="2022  Paradise - Artist collective Online visuals" id="YUJING" style="width: 20%; height: auto; opacity: 0;">
+    <img src="image/Web/AGNE.png" class="image-container" alt="2022  Paradise - Artist collective Online visualss" id="AGNE" style="width: 15%; height: auto; opacity: 0;">
+    <img src="image/Web/BARROS.png" class="image-container" alt="2022  Paradise - Artist collective Online visuals" id="BARROS" style="width: 15%; height: auto; opacity: 0;">
+    <img src="image/Web/Hot.png" class="image-container" alt="2023 Caution Hot 高温警告 - Brand Logo" id="Hot" style="width: 15%; height: auto; opacity: 0;">
+    <img src="image/Web/LAUYI.png" class="image-container" alt="2022  Paradise - Artist collective Online visuals" id="LAUYI" style="width: 15%; height: auto; opacity: 0;">
+    <img src="image/Web/SASU.png" class="image-container" alt="2022  Paradise - Artist collective Online visuals" id="SASU" style="width: 15%; height: auto; opacity: 0;">
+    <img src="image/Web/SAMAN.png" class="image-container" alt="2022  Paradise - Artist collective Online visuals" id="SAMAN" style="width: 20%; height: auto; opacity: 0;">
+    <img src="image/Web/moguè.png" class="image-container" alt="2024 moguè - Brand logo" id="moguè" style="width: 15%; height: auto; opacity: 0;">
+    <img src="image/Web/poster.jpg" class="image-container" alt="2025 Body mode - Performance Festival, De Brakke Grond" id="poster" style="width: 25%; height: auto; opacity: 0;">
+    <img src="image/Web/CIRO.png" class="image-container" alt="2022  Paradise - Artist collective Online visuals" id="CIRO" style="width: 10%; height: auto; opacity: 0;">
+    <img src="image/Web/YUJING.png" class="image-container" alt="2022  Paradise - Artist collective Online visuals" id="YUJING" style="width: 15%; height: auto; opacity: 0;">
+    
+    <div class="text-container">
+        <h4>Graphic design (2022-2025),</h4>
+            <p>
+              Selection of works
+              posters for performance festivals, logo designs, and commissioned visuals.
+              </p>
+    </div> 
+</div>
+
+    <button class="menu-toggle">☰</button>
+
+    <div class="menu-container" id="menu">
+      <ul>
+        <li data-title="CallMe"><a href="contentcallme.html">CallMe</a></li> 
+        <li data-title="Endgame"><a href="contentendgame.html">Endgame</a></li>
+        <li data-title="Himalaya Fancam"><a href="contenthimalaya.html">Himalaya Fancam</a></li>
+        <li data-title="Scroll"><a href="contentscroll.html">Scroll</a></li>
+        <li data-title="4All"><a href="content4all.html">4All</a></li>
+        <li data-title="Frame"><a href="contentframe.html">Frame</a></li>
+        <li data-title="Episode"><a href="contentepsiode.html">Episode</a></li>
+        <li data-title="MO"><a href="contentmo.html">MO</a></li>
+        <li data-title="Graphic Design"><a href="contentextra.html"><strong>Graphic Design</strong></a></li>
+      </ul>
+    </div>
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const textContainer = document.querySelector('.text-container');
+    const imageContainers = document.querySelectorAll('.image-container');
+
+    if (!textContainer) return; // Don't run unless it's the right page
+
+    imageContainers.forEach(container => {
+      container.addEventListener('mouseenter', () => {
+        const subtitle = document.createElement('p');
+        subtitle.className = 'subtitle';
+        subtitle.textContent = container.alt;
+        textContainer.appendChild(subtitle);
+      });
+
+      container.addEventListener('mouseleave', () => {
+        const existing = textContainer.querySelector('.subtitle');
+        if (existing) existing.remove();
+      });
+
+      container.addEventListener('mouseup', () => {
+        const existing = textContainer.querySelector('.subtitle');
+        if (existing) existing.remove();
+      });
+    });
+  });
+</script>
+
+</body>
+
+</html>

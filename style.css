@@ -1,0 +1,327 @@
+body {
+ font-family: Arial, sans-serif;
+ background-color: #ffffff; /* White background */
+ color: #333;
+ margin: 0; /* Remove default margin */
+ padding: 0; /* Remove default padding */
+ overflow: hidden;
+ width: 100vw;
+ height: 100vh;
+ }
+ .content {
+ margin-top: 60px; /* Space below the navigation bar */
+ display: flex;
+ justify-content: right; /* Center the content horizontally */
+ padding: 20px; /* Add padding to the content area */
+ }
+ .column {
+ width: 50%; /* Each column takes up half the width */
+ padding: 0 20px; /* Padding inside each column */
+ box-sizing: border-box; /* Includes padding in width */
+ }
+ .image-container {
+ position: absolute; /* Absolute positioning for draggable items */
+ cursor: grab; /* Cursor for dragging */
+ box-shadow: transparent;
+ transition: box-shadow 0.1s ease;
+ padding: 0;
+ width: 300px; /* Fixed width */
+ height: 150px; /* Fixed height */
+ }
+ .image-container img {
+ width: 100%; /* Ensure image fits the container width */
+ height: 100%; /* Ensure image fits the container height */
+ object-fit: contain; /* Maintain aspect ratio */
+ }
+ .boundary {
+ position: absolute; /* Positioned at the edges of the viewport */
+ z-index: 900; /* Behind the images but above the background */
+ background-color: transparent; /* Invisible boundaries */
+ }
+ .boundary.top {
+ top: 0;
+ left: 0;
+ width: 100vw;
+ height: 60px; /* Height of the navigation bar */
+ }
+ .boundary.bottom {
+ bottom: 0;
+ left: 0;
+ width: 100vw;
+ height: 20px; /* Height of the contact bar */
+ }
+ .boundary.left {
+ top: 0;
+ left: 0;
+ width: 20px; /* Discreet left boundary */
+ height: calc(100vh - 120px); /* Full viewport height minus top and bottom boundaries */
+ }
+ .boundary.right {
+ top: 0;
+ right: 0;
+ width: 40px; /* Discreet right boundary */
+ height: calc(100vh - 120px); /* Full viewport height minus top and bottom boundaries */
+ }
+ .content {
+ margin-top: 60px; /* Space below the navigation bar */
+ position: relative; /* Position relative to allow absolute positioning of images */
+ width: 100vw; /* Full viewport width */
+ height: calc(100vh - 60px); /* Full viewport height minus navigation height */
+ overflow: hidden; /* Prevent scrollbars from appearing */
+ }
+
+ .navigation {
+display: flex; /* Flexbox for navigation */
+justify-content: space-between; /* Space between left and right sections */
+align-items: center; /* Center the content vertically */
+padding: 20px 20px; /* Padding for spacing */
+width: 100%; /* Full width of the screen */
+background-color: transparent; /* Transparent background */
+position: fixed; /* Fixes the navigation at the top */
+top: 0; /* Aligns to the top of the page */
+left: 0; /* Aligns to the left of the page */
+z-index: 1000; /* Ensures it stays above other content */
+box-sizing: border-box;
+font-family: Arial, sans-serif;
+}
+
+.navigation .mlb-link {
+font-size: 24px; /* Font size for MLB */
+margin: 0; /* Remove default margin */
+font-weight: bold; /* Bold text for MLB */
+}
+
+.navigation .nav-links {
+display: flex; /* Flexbox for links */
+gap: 15px; /* Space between links */
+}
+
+.navigation a {
+text-decoration: none; /* Removes underline from links */
+color: #333; /* Link text color */
+font-weight: bold; /* Bold for links */
+font-size: 18px; /* Font size for links */
+}
+
+.navigation a:hover {
+text-decoration: underline; /* Underline on hover */
+color: rgb(131, 0, 22);
+text-decoration: none;
+}
+
+.navigation a:active {
+color: rgb(131, 0, 22); /* Ensure color remains red when link is clicked */
+}
+
+    .menu-container {
+      position: fixed; /* Fixed position to keep it in view */
+      top: 60px; /* Space from the top navigation */
+      left: 0px; /* Start hidden off-screen */
+      width: 250px; /* Menu width */
+      height: 100%; /* Full viewport height */
+      background-color: rgba(243, 243, 243, 0.185); /* Semi-transparent background */
+      border-right: 2px solid rgba(207, 207, 207, 0.014); /* Light border for delimitation */
+      transition: left 0.3s ease; /* Smooth transition for menu visibility */
+      z-index: 10000; /* Ensure it's above other content */
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+    }
+
+    .menu-container ul {
+      list-style-type: none; /* Remove bullet points */
+      padding: 0;
+      margin: 0;
+    }
+
+    .menu-container li {
+      margin: 10px 0; /* Space between menu items */
+    }
+
+    .menu-container a {
+      text-decoration: none; /* Remove underline */
+      color: #333; /* Text color */
+      font-family: 'Arial', sans-serif; /* Use Arial font */
+      font-size: 16px; /* Font size matching the content */
+    }
+
+    .menu-container a:hover {
+      color: #000; /* Change color on hover */
+    }
+
+    .menu-toggle {
+      position: fixed; /* Fixed position */
+      bottom: 20px; /* Space from the bottom */
+      left: 20px; /* Space from the left edge */
+      background-color: #333; /* Button background */
+      color: #fff; /* Button text color */
+      border: none; /* Remove default border */
+      padding: 10px 20px; /* Padding inside button */
+      cursor: pointer; /* Cursor for clickable button */
+      z-index: 1000; /* Ensure it stays above other content */
+      border-radius: 5px; /* Rounded corners */
+    }
+
+    .menu-container:not(.show) {
+      left: -100%;
+    }
+
+    .menu-container li.hovered a {
+        font-weight: bold;
+        }
+
+ .text-container {
+    position: absolute; /* Absolute positioning for draggable items */
+    cursor: grab; /* Cursor for dragging */
+    box-shadow: transparent;
+    transition: box-shadow 0.1s ease;
+    padding: 10px 15px;
+    width: 300px; /* Fixed width */
+    height: max-content; /* Fixed height */
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 0;
+    backdrop-filter: blur(1%);
+    border-radius: 8px;
+    color: #333;
+    font-size: 14px;
+    line-height: 1.4;
+    margin-bottom: 1em;
+    }
+.text-container p {
+    margin: 0;
+    width: 90%; /* Ensure image fits the container width */
+    height: 90%; /* Ensure image fits the container height */
+    object-fit: fill;
+    overflow: hidden;
+    white-space: wrap;
+    margin-bottom: 1em;
+    }
+.text-container h4 {
+    margin: 0;
+    width: 90%; /* Ensure image fits the container width */
+    height: 90%; /* Ensure image fits the container height */
+    object-fit: fill;
+    overflow: hidden;
+    white-space: wrap;
+    margin-bottom: 1em;
+}
+.text-container a {
+    margin: 0;
+    width: 90%; /* Ensure image fits the container width */
+    height: 90%; /* Ensure image fits the container height */
+    object-fit: fill;
+    overflow: hidden;
+    white-space: wrap;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 1em;
+    text-decoration: none;
+}
+
+.subtitle {
+  font-size: 14px;
+  font-style: italic;
+  color: #333;
+  margin-top: 10px;
+}
+
+ @media (max-width: 600px) {
+      .navigation {
+        flex-direction: column; /* Stack items vertically on small screens */
+      }
+
+      .navigation .nav-links {
+        flex-direction: column; /* Stack links vertically on small screens */
+        gap: 10px; /* Adjust gap for smaller screens */
+      }
+
+      .navigation a {
+        font-size: 16px; /* Smaller font size for smaller screens */
+      }
+
+            .menu-toggle {
+        display: block;
+        position: fixed;
+        left: 10px;
+        bottom: 10px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        border-radius: 5px;
+        z-index: 10001;
+      }
+      
+      .menu-container {
+        position: fixed; /* No longer fixed on mobile */
+        bottom: -100%;
+        left: 0;
+        width: 100%;
+        max-height: 100%;
+        background-color: transparent;
+        border-top: none;
+        box-shadow: none;
+        padding: 20px 0;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow-y: auto;
+        transition: bottom 0.3s ease;
+        z-index: 1000;
+      }
+
+        .menu-container.show {
+          left: 0; /* Slide into view */
+          display: flex; /* Show when toggled */
+          flex-direction: column;
+          align-items: center;
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          background: rgba(255, 255, 255, 0.9);
+          backdrop-filter: blur(1%);
+          z-index: 1000;
+          padding: 5px 0;
+          border-top: none;
+        }
+
+      .menu-container ul {
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       padding: 0;
+      }
+
+      .menu-container li {
+       margin: 8px 0;
+       }
+
+      .content {
+        flex-direction: column; /* Stack columns vertically on small screens */
+        position: relative; /* allow flow positioning */
+        overflow: visible; /* allow scrolling */
+      }
+
+        .image-container {
+        /*position: static !important; /* cancel absolute on mobile */
+    width: 90vw !important;
+    max-width: 40%;
+    min-width: 60%;
+    margin: 10px auto;
+    overflow: visible;
+    /*cursor: default !important; /* disable grab cursor */
+      }/* Adjust navigation layout (you already did) */
+
+        .text-container {
+          overflow: visible;
+          }
+
+  .boundary {
+    display: none !important; /* hide boundaries only on mobile */
+  }
+
+      }

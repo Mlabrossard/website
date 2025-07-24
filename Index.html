@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MLB - Index</title>
+  <style>
+  body {
+ font-family: Arial, sans-serif;
+ background-color: #ffffff; /* White background */
+ color: #333;
+ margin: 0; /* Remove default margin */
+ padding: 0; /* Remove default padding */
+ }
+
+ .content {
+ display: flex;
+ justify-content: flex-end; /* Center the content horizontally */
+ padding: 20px; /* Add padding to the content area */
+ margin-top: 60px; /* Space below the navigation bar */
+ position: relative;
+ }
+
+ .column {
+ width: 50%; /* Each column takes up half the width */
+ padding: 0 20px; /* Padding inside each column */
+ box-sizing: border-box; /* Includes padding in width */
+ }
+
+.image-container {
+  position: absolute;
+  cursor: grab;
+  box-shadow: transparent;
+  transition: box-shadow 0.1s ease;
+  padding: 0;
+  /* REMOVE pointer-events: none; */
+  user-select: none;
+  max-height: 40%;
+  max-width: 40%;
+  min-width: 30%;   /* Minimum width so images don't get too small */
+  min-height: 30%;
+  width: auto;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+ .image-container img {
+ width: 100%; /* Ensure image fits the container width */
+ height: auto; /* Ensure image fits the container height */
+ max-width: 90vw;
+ object-fit: contain; /* Maintain aspect ratio */
+ }
+ .boundary {
+ position: absolute; /* Positioned at the edges of the viewport */
+ z-index: 900; /* Behind the images but above the background */
+ background-color: transparent; /* Invisible boundaries */
+ }
+ .boundary.top {
+ top: 0;
+ left: 0;
+ width: 100vw;
+ height: 60px; /* Height of the navigation bar */
+ }
+ .boundary.bottom {
+ bottom: 0;
+ left: 0;
+ width: 100vw;
+ height: 20px; /* Height of the contact bar */
+ }
+ .boundary.left {
+ top: 0;
+ left: 0;
+ width: 20px; /* Discreet left boundary */
+ height: calc(100vh - 120px); /* Full viewport height minus top and bottom boundaries */
+ }
+ .boundary.right {
+ top: 0;
+ right: 0;
+ width: 40px; /* Discreet right boundary */
+ height: calc(100vh - 120px); /* Full viewport height minus top and bottom boundaries */
+ }
+ .content {
+ margin-top: 60px; /* Space below the navigation bar */
+ position: relative; /* Position relative to allow absolute positioning of images */
+ width: 100vw; /* Full viewport width */
+ height: calc(100vh - 60px); /* Full viewport height minus navigation height */
+ overflow: hidden; /* Prevent scrollbars from appearing */
+ }
+
+ .navigation {
+display: flex; /* Flexbox for navigation */
+justify-content: space-between; /* Space between left and right sections */
+align-items: center; /* Center the content vertically */
+padding: 20px 20px; /* Padding for spacing */
+width: 100%; /* Full width of the screen */
+background-color: transparent; /* Transparent background */
+position: fixed; /* Fixes the navigation at the top */
+top: 0; /* Aligns to the top of the page */
+left: 0; /* Aligns to the left of the page */
+z-index: 1000; /* Ensures it stays above other content */
+box-sizing: border-box;
+font-family: Arial, sans-serif;
+}
+
+.navigation .mlb-link {
+font-size: 24px; /* Font size for MLB */
+margin: 0; /* Remove default margin */
+font-weight: bold; /* Bold text for MLB */
+}
+
+.navigation .nav-links {
+display: flex; /* Flexbox for links */
+gap: 15px; /* Space between links */
+}
+
+.navigation a {
+text-decoration: none; /* Removes underline from links */
+color: #333; /* Link text color */
+font-weight: bold; /* Bold for links */
+font-size: 18px; /* Font size for links */
+}
+
+.navigation a:hover {
+text-decoration: underline; /* Underline on hover */
+color: rgb(131, 0, 22);
+text-decoration: none;
+}
+
+.navigation a:active {
+color: rgb(131, 0, 22); /* Ensure color remains red when link is clicked */
+}
+
+    .subtitle-container {
+  position: fixed; /* Position it fixed on the screen */
+  left: 20px; /* Align to the left */
+  top: 100px; /* Position it below the navigation bar */
+  width: 200px; /* Set the width */
+  z-index: 900; /* Behind the navigation but above images */
+  font-size: 14px; /* Font size */
+  color: #333; /* Text color */
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease; /* Smooth transition */
+}
+
+#subtitle-text {
+  margin: 0; /* No margin */
+  line-height: 1.5; /* Line height for readability */
+}
+
+
+    .contact-info {
+      position: fixed; /* Fixed position to stay at the bottom */
+      left: 20px; /* Align to the left */
+      bottom: 20px; /* Distance from the bottom of the page */
+      font-size: 14px; /* Font size for contact */
+      color: #333; /* Text color */
+      background-color: transparent; /* No background color */
+      padding: 10px; /* Padding around text */
+      z-index: 1000; /* Ensure it stays above other content */
+    }
+
+    @media (max-width: 600px) {
+      .navigation {
+        flex-direction: column; /* Stack items vertically on small screens */
+      }
+      .navigation .nav-links {
+        flex-direction: column; /* Stack links vertically on small screens */
+        gap: 10px; /* Adjust gap for smaller screens */
+      }
+      .navigation a {
+        font-size: 16px; /* Smaller font size for smaller screens */
+      }
+      .content {
+        flex-direction: column; /* Stack columns vertically on small screens */
+        position: relative; /* allow flow positioning */
+        overflow: auto; /* allow scrolling */
+      }
+        .image-container {
+        /*position: static !important; /* cancel absolute on mobile */
+    width: 90vw !important;
+    max-width: 40%;
+    min-width: 40%;
+    margin: 10px auto;
+    /*cursor: default !important; /* disable grab cursor */
+      }/* Adjust navigation layout (you already did) */
+      }
+
+    @media (max-width: 400px) {
+      .image-container {
+    max-width: 90vw;
+      }
+      }
+  </style>
+</head>
+<body>
+  <div class="navigation">
+    <h1 class="mlb-link">
+      <a href="index.html">
+        <img src="image/Web/Mia.png" alt="MLB Logo" style="height: 40px;">
+      </a>
+    </h1>
+    <div class="nav-links">
+      <a href="work.html">Works</a>
+      <a href="about.html">About</a>
+    </div>
+  </div>
+
+  <div class="content">
+    <!-- Invisible boundaries -->
+    <div class="boundary top"></div>
+    <div class="boundary bottom"></div>
+    <div class="boundary left"></div>
+    <div class="boundary right"></div>
+
+    <img src="image/IndexCALLM.png" class="image-container" alt="CallMe 2021" id="callme" style="width: 25%; height: auto;">
+    <img src="image/Web/gif4.gif" class="image-container" alt="4all 2023" id="4all" style="width: 25%; height: auto;">
+    <img src="image/Web/episodegif.gif" class="image-container" alt="Episode 2025" id="Episode" style="width: 25%; height: auto;">
+    <img src="image/IndexEND.png" class="image-container" alt="Endgame 2021" id="end" style="width: 15%; height: auto;">
+    <img src="image/Web/gifFrame.gif" class="image-container" alt="Frame 2024" id="frame" style="width: 22%; height: auto;">
+    <img src="image/Index+.png" class="image-container" alt="Graphic Design" id="extra" style="width: 5%; height: auto;">
+    <img src="image/Web/Mo - oneM.gif" class="image-container" alt="MO 2025" id="mo" style="width: 25%; height: auto;">
+  </div>
+
+    <!-- Subtitle container -->
+    <div class="subtitle-container">
+      <p id="subtitle-text">Subtitle text will appear here</p>
+    </div>
+
+  <div class="contact-info">
+    <p>Contact: mlabrossard@gmail.com | Instagram: @mia.onl</p>
+  </div>
+
+  <script>
+window.onload = () => {
+  const imageContainers = document.querySelectorAll('.image-container');
+
+  // Define margins from edges for boundaries (adjust as needed)
+   const boundaries = {
+    top: 60,    // nav bar height
+    bottom: 20, // contact bar height
+    left: 20,
+    right: 40
+  };
+
+   let zIndexCounter = 1000;
+
+  // Function to get current boundaries for dragging (inside viewport with margin)
+  function getBoundaries(container) {
+    const width = container.offsetWidth;
+    const height = container.offsetHeight;
+
+    return {
+      left: boundaries.left,
+      top: boundaries.top,
+      right: window.innerWidth - width - boundaries.right,
+      bottom: window.innerHeight - height - boundaries.bottom
+    };
+  }
+
+  // Initialize all images with random positions inside boundaries
+  imageContainers.forEach(container => {
+    const boundaries = getBoundaries(container);
+
+    // Randomize initial position within boundaries
+    const x = Math.random() * (boundaries.right - boundaries.left) + boundaries.left;
+    const y = Math.random() * (boundaries.bottom - boundaries.top) + boundaries.top;
+
+    container.style.position = 'absolute';
+    container.style.left = `${x}px`;
+    container.style.top = `${y}px`;
+    container.style.cursor = 'grab';
+    container.style.opacity = '1';
+    container.style.zIndex = '1';
+  });
+
+  // Variables to track dragging state
+  let dragged = null;
+  let startX = 0;
+  let startY = 0;
+  let origX = 0;
+  let origY = 0;
+
+  // Mouse down on any container: start dragging
+  imageContainers.forEach(container => {
+    container.addEventListener('mousedown', e => {
+      dragged = container;
+      startX = e.clientX;
+      startY = e.clientY;
+
+      // Get current position numbers (parseFloat to convert "px" to number)
+      origX = parseFloat(dragged.style.left);
+      origY = parseFloat(dragged.style.top);
+
+      dragged.style.cursor = 'grabbing';
+      zIndexCounter++;
+      dragged.style.zIndex = zIndexCounter;
+
+      e.preventDefault();
+    });
+
+   container.addEventListener('dragstart', e => e.preventDefault());
+  });
+
+  // Mouse move on document: if dragging, move the dragged element
+  document.addEventListener('mousemove', e => {
+     if (!dragged) return;
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
+
+      let newX = origX + dx;
+      let newY = origY + dy;
+
+      // Get boundaries for dragged container
+      const boundaries = getBoundaries(dragged);
+
+      // Clamp new position within boundaries
+      if (newX < boundaries.left) newX = boundaries.left;
+      if (newY < boundaries.top) newY = boundaries.top;
+      if (newX > boundaries.right) newX = boundaries.right;
+      if (newY > boundaries.bottom) newY = boundaries.bottom;
+
+      // Apply new position
+      dragged.style.left = `${newX}px`;
+      dragged.style.top = `${newY}px`;
+
+      e.preventDefault();
+      });
+
+  // Mouse up anywhere: stop dragging
+  document.addEventListener('mouseup', () => {
+    if (dragged) {
+      dragged.style.cursor = 'grab';
+      dragged = null;
+    }
+  });
+
+  // On window resize, reposition images inside boundaries if outside
+  window.addEventListener('resize', () => {
+    imageContainers.forEach(container => {
+      const boundaries = getBoundaries(container);
+
+      let left = parseFloat(container.style.left);
+      let top = parseFloat(container.style.top);
+
+      if (left < boundaries.left) left = boundaries.left;
+      if (top < boundaries.top) top = boundaries.top;
+      if (left > boundaries.right) left = boundaries.right;
+      if (top > boundaries.bottom) top = boundaries.bottom;
+
+      container.style.left = `${left}px`;
+      container.style.top = `${top}px`;
+    });
+  });
+
+const subtitleBox = document.querySelector('.subtitle-container');
+const subtitleText = document.getElementById('subtitle-text');
+
+imageContainers.forEach(container => {
+  // Show subtitle on hover (desktop)
+  container.addEventListener('mouseenter', () => {
+    subtitleText.textContent = container.alt || '';
+    subtitleBox.style.opacity = 1;
+  });
+
+  container.addEventListener('mouseleave', () => {
+    subtitleBox.style.opacity = 0;
+  });
+
+  // Show subtitle on touch (mobile)
+  container.addEventListener('touchstart', () => {
+    subtitleText.textContent = container.alt || '';
+    subtitleBox.style.opacity = 1;
+
+    // Optional: fade out after a short time on mobile
+    setTimeout(() => {
+      subtitleBox.style.opacity = 0;
+    }, 3000);
+  });
+});
+}
+  </script>
+
+</body>
+</html>

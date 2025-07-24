@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>navigation</title>
+  <template id="navigation style">
+  <style>
+
+    .navigation {
+      display: flex; /* Flexbox for navigation */
+      justify-content: space-between; /* Space between left and right sections */
+      align-items: center; /* Center the content vertically */
+      padding: 20px 20px; /* Padding for spacing */
+      width: 100%; /* Full width of the screen */
+      background-color: transparent; /* Transparent background */
+      position: fixed; /* Fixes the navigation at the top */
+      top: 0; /* Aligns to the top of the page */
+      left: 0; /* Aligns to the left of the page */
+      z-index: 1000; /* Ensures it stays above other content */
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    .navigation .mlb-link {
+      font-size: 24px; /* Font size for MLB */
+      margin: 0; /* Remove default margin */
+      font-weight: bold; /* Bold text for MLB */
+    }
+
+    .navigation .nav-links {
+      display: flex; /* Flexbox for links */
+      gap: 15px; /* Space between links */
+    }
+
+    .navigation a {
+      text-decoration: none; /* Removes underline from links */
+      color: #333; /* Link text color */
+      font-weight: bold; /* Bold for links */
+      font-size: 18px; /* Font size for links */
+    }
+    
+    .navigation a:hover {
+      text-decoration: underline; /* Underline on hover */
+      color: rgb(131, 0, 22);
+      text-decoration: none;
+    }
+
+    .navigation a:active {
+      color: rgb(131, 0, 22); /* Ensure color remains red when link is clicked */
+    }
+  </style>
+  </head>
+  <body>
+  <div class="navigation">
+    <h1 class="mlb-link"><a href="index.html">MLB</a></h1>
+    <div class="nav-links">
+      <a href="work.html">Works</a>
+      <a href="about.html">About</a>
+    </div>
+  </div>
+</body>
+  </html>

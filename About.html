@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MLB - About</title>
+  <link rel="stylesheet" href="navigation bar style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffffff; /* White background */
+      color: #333;
+      margin: 0; /* Remove default margin */
+      padding: 0; /* Remove default padding */
+    }
+
+    .navigation {
+      display: flex; /* Flexbox for navigation */
+      justify-content: space-between; /* Space between left and right sections */
+      align-items: center; /* Center the content vertically */
+      padding: 20px 20px; /* Padding for spacing */
+      width: 100%; /* Full width of the screen */
+      background-color: transparent; /* Transparent background */
+      position: fixed; /* Fixes the navigation at the top */
+      top: 0; /* Aligns to the top of the page */
+      left: 0; /* Aligns to the left of the page */
+      z-index: 1000; /* Ensures it stays above other content */
+      box-sizing: border-box;
+    }
+
+    .navigation .mlb-link {
+      font-size: 24px; /* Font size for MLB */
+      margin: 0; /* Remove default margin */
+    }
+
+    .navigation .nav-links {
+      display: flex; /* Flexbox for links */
+      gap: 15px; /* Space between links */
+    }
+
+    .navigation a {
+      text-decoration: none; /* Removes underline from links */
+      color: #333; /* Link text color */
+      font-weight: bold; /* Bold for links */
+      font-size: 18px; /* Font size for links */
+    }
+    
+    .navigation a:hover {
+      text-decoration: underline; /* Underline on hover */
+      color: rgb(131, 0, 22);
+      text-decoration: none; /* Underline on hover */
+    }
+
+    .navigation a:active {
+      color: rgb(131, 0, 22); /* Ensure color remains red when link is clicked */
+    }
+
+    .contact-info {
+      position: absolute; /* Positionne le texte de contact */
+      left: 20px; /* Aligne à gauche */
+      bottom: 20px; /* Distance du bas de la page */
+      font-size: 14px; /* Taille de la police pour contact */
+      color: #333; /* Couleur du texte */
+      background-color: transparent; /* No background color */
+      padding: 10px; /* Padding around text */
+    }
+
+    .content {
+      margin-top: 60px; /* Space below the navigation bar */
+      display: flex;
+      justify-content: center; /* Center the content horizontally */
+      padding: 20px; /* Add padding to the content area */
+    }
+
+    .about-container {
+      display: flex;
+      width: 100%;
+      max-width: 1200px; /* Maximum width for the container */
+      margin: 0 auto; /* Center container with margin */
+    }
+
+    .column {
+      width: 50%; /* Each column takes up half the width */
+      padding: 0 20px; /* Padding inside each column */
+      box-sizing: border-box; /* Includes padding in width */
+    }
+    
+    .column.left {
+      text-align: right;
+    }
+
+    .column:not(:last-child) {
+      border-right: 2px solid transparent; /* Border between columns */
+    }
+
+    .pdf-link {
+      font-weight: bold;
+      text-decoration: none;
+      color: #333;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+    }
+
+    @media (max-width: 600px) {
+   .about-container {
+    flex-direction: column;
+   }
+
+   .content {
+   margin-top: 100px; /* more space on mobile, if nav grows taller */
+   padding: 20px;
+   }
+
+   .column {
+    width: 100%;
+    text-align: left;
+    padding: 10px 0;
+   }
+
+   .column.left {
+    text-align: left;
+   }
+
+   .contact-info {
+    position: static;
+    text-align: center;
+    margin-top: 20px;
+    padding-bottom: 40px;
+   }
+
+   .navigation {
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.6); /* light blur on mobile only */
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+  }
+     .navigation .nav-links {
+    flex-direction: column;
+    gap: 10px; /* Adjust gap for smaller screens */
+   }
+
+      .navigation.centered-nav {
+    flex-direction: column;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally too */
+    height: auto; /* Let it grow based on content */
+  }
+     
+  .navigation a {
+  font-size: 16px; /* Smaller font size for smaller screens */
+  }
+
+   .pdf-link {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 0;
+   }
+
+   .mlb-link {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+   }
+
+   }
+   
+
+  </style>
+</head>
+<body>
+  <div class="navigation">
+    <h1 class="mlb-link">
+      <a href="index.html">
+        <img src="image/Web/Mia.png" alt="MLB Logo" style="height: 40px;">
+      </a></h1>
+    <div class="nav-links">
+      <a href="work.html">Works</a>
+      <a href="about.html">About</a>
+    </div>
+  </div>
+
+  <div class="content">
+    <main class="about-container">
+      <div class="column left">
+
+        <p><strong>Mia La-Brossard</strong> (1997) is an artist and choreographer based in Amsterdam, Netherlands.</p>
+        <p>Subverting frontal theatrical setups, she creates interactive installations as well as videos activated by various performers. The collaborative aspect of these performances extends through nonlinear gameplay, inviting team members to become players who navigate different narrative arcs according to variable segments. Mia invites the audience to contemplate various layers of voyeurism by rotating the hierarchical relationships between the observer and the observed. She arranges distorting choreographies questioning the physical and social norms affiliated with the prevailing hegemonic power systems by escaping into fluid worlds and simulation spaces.</p>
+        <p>Writing her own story, Uma, a drag character developed since 2015, is a significant though lateral component of the artist's practice. She exists both physically, as a signatory of various projects and performer, and as an internet halo surrounding Mia's work.</p>
+      </div>
+
+      <div class="column right">
+        <p><strong>Mia La-Brossard</strong> (1997) est une artiste et chorégraphe basée à Amsterdam, Pays-Bas.</p>
+        <p>Se déjouant de dispositifs théâtraux frontaux, elle construit des installations interactives, mais aussi des vidéos, activées par différent.e.x.s performer.euse.x.s. L’aspect collaboratif de ces performances s’étend à travers des gameplay non linéaires, invitant les membres de l’équipe à devenir des joueur.euse.x.s qui naviguent différents arcs narratifs selon des découpages variables. Mia propose à l’audience de contempler diverses strates de voyeurisme en faisant pivoter les rapports hiérarchiques entre le.a regardant.e.x et le.a regardé.e.x. Elle agence des chorégraphies déformantes questionnant les normes physiques et sociales affiliées aux systèmes de pouvoir hégémoniques en place en s’échappant dans des mondes fluides et des espaces de simulation.</p>
+        <p >Écrivant sa propre histoire, Uma, personnage de drag développé depuis 2015, est une composante considérable bien que latérale de la pratique de l’artiste. Elle existe aussi bien physiquement, en tant que signataire de différents projets et performeuse, qu’en tant que nimbe d’Internet entourant le travail de Mia.</p>
+      </div>
+
+    </main>
+  </div>
+
+  <div class="pdf-link">
+      <p><a href="pdf/Portfolio 25.pdf" target="_blank" class=pdf-link>[Portfolio PDF]</a><a href="pdf/Selection of work.pdf" target="_blank" class=pdf-link>[Only Resume PDF]</a></p>
+      </div>
+
+  <div class="contact-info">
+      <p>Contact: mlabrossard@gmail.com | Instagram: @mia.onl</p>
+      </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('Page loaded');
+    });
+  </script>
+</body>
+</html>
