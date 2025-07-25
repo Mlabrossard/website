@@ -11,7 +11,8 @@
       color: #333;
       margin: 0; /* Remove default margin */
       padding: 0; /* Remove default padding */
-      overflow-x: hidden; /* Prevent horizontal scrolling */
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch; /* Prevent horizontal scrolling */
     }
 
     .navigation {
@@ -77,9 +78,10 @@
         position: relative;
         margin-left: 250px;
         margin-top: 60px;
-        height: calc(100vh - 60px);
-        width: calc(100vw - 250px);
+        height: 60px auto 0 auto;
+        width: 100%;
         display: flex;
+        padding: 0 10px;
         justify-content: center;
         align-items: center;
         overflow-x: auto;
@@ -279,8 +281,8 @@
 
       .grid-wrapper {
         margin-left: 0;
-        width: 100%;
-        margin-top: 200px;
+        height: auto;
+        margin-top: 160px;
         padding: 0 10px;
         justify-content: center;
       }
