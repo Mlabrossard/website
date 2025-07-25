@@ -171,21 +171,31 @@ color: rgb(131, 0, 22); /* Ensure color remains red when link is clicked */
       .navigation a {
         font-size: 16px; /* Smaller font size for smaller screens */
       }
+      
       .content {
-      position: static;
-      text-align: center;
-      margin-top: 20px;
-      padding-bottom: 40px;
+        flex-direction: column; /* Stack columns vertically on small screens */
+        position: relative; /* allow flow positioning */
+        overflow: visible; /* allow scrolling */
       }
+      
         .image-container {
         /*position: static !important; /* cancel absolute on mobile */
     width: 90vw !important;
-    max-width: 20%;
-    min-width: 10%;
+    max-width: 40%;
+    min-width: 60%;
     margin: 10px auto;
+    overflow: visible;
     /*cursor: default !important; /* disable grab cursor */
       }/* Adjust navigation layout (you already did) */
-      }
+
+      
+   .contact-info {
+    position: static;
+    text-align: center;
+    margin-top: 20px;
+    padding-bottom: 40px;
+   }
+   }
 
     @media (max-width: 400px) {
       .image-container {
