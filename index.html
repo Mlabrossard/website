@@ -381,14 +381,11 @@ imageContainers.forEach(container => {
 
   // Show subtitle on touch (mobile)
   container.addEventListener('touchstart', () => {
+  if (isMobileView()) {
     subtitleText.textContent = container.alt || '';
     subtitleBox.style.opacity = 1;
-
-    // Optional: fade out after a short time on mobile
-    setTimeout(() => {
-      subtitleBox.style.opacity = 0;
-    }, 3000);
-  });
+  }
+});
 });
 }
   </script>
