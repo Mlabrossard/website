@@ -190,11 +190,15 @@ color: rgb(131, 0, 22); /* Ensure color remains red when link is clicked */
 
       
    .contact-info {
-    position: static;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
     text-align: center;
-    margin-top: 20px;
-    padding-bottom: 40px;
-   }
+    padding: 8px;
+    background-color: white; /* Optional: add background for readability */
+    z-index: 1000;
+  }
    }
 
     @media (max-width: 400px) {
