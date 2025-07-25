@@ -253,7 +253,6 @@ const leftBoundary = 10; // Discreet left boundary
 const rightBoundary = 10; // Discreet right boundary
 const viewportWidth = window.innerWidth;
 const viewportHeight = window.innerHeight;
-const isMobile = window.innerWidth <= 600;
 let zIndexCounter = 1001;
 function isMobileView() {
   return window.innerWidth <= 600;
@@ -277,8 +276,8 @@ window.onload = () => {
             let y = Math.random() * (window.innerHeight - container.height);
 
             // Validate the the image will be placed inside the bounds, and update the proposed position otherwise
-            if (!isMobile && x < leftBoundary) x = leftBoundary;
-            if (isMobile && x < 0) x = 0;  
+            if (!isMobileView() && x < leftBoundary) x = leftBoundary;
+            if (isMobileView() && x < 0) x = 0;  
             if (y < topBoundary) y = topBoundary;
             if (x + container.width > viewportWidth - rightBoundary) {
                 x = viewportWidth - container.width - rightBoundary;
@@ -323,7 +322,7 @@ window.onload = () => {
       const containerRect = container.getBoundingClientRect();
 
       // Only apply boundaries if NOT mobile (or customize boundaries for mobile here)
-      if (!isMobile) {
+      if (!isMobileView()) {
         if (newLeft < leftBoundary) newLeft = leftBoundary;
         if (newTop < topBoundary) newTop = topBoundary;
         if (newLeft + containerRect.width > viewportWidth - rightBoundary) {
