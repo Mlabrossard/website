@@ -232,129 +232,127 @@ color: rgb(131, 0, 22); /* Ensure color remains red when link is clicked */
   </div>
 
   <script>
+const topBoundary = 10; // Height of the navigation bar
+const bottomBoundary = 20; // Height of the contact bar
+const leftBoundary = 10; // Discreet left boundary
+const rightBoundary = 10; // Discreet right boundary
+const viewportWidth = window.innerWidth;
+const viewportHeight = window.innerHeight;
+const isMobile = window.innerWidth <= 600;
+let zIndexCounter = 1001;
+function isMobileView() {
+  return window.innerWidth <= 600;
+};
+
 window.onload = () => {
-  const imageContainers = document.querySelectorAll('.image-container');
+    const imageContainers = document.querySelectorAll('.image-container');
+    const textContainers = document.querySelectorAll('.text-container');
+    const subtitleBox = document.querySelector('.subtitle-container');
+    const subtitleText = document.getElementById('subtitle-text');
 
-  // Define margins from edges for boundaries (adjust as needed)
-   const boundaries = {
-    top: 60,    // nav bar height
-    bottom: 20, // contact bar height
-    left: 20,
-    right: 40
-  };
-
-   let zIndexCounter = 1000;
-
-  // Function to get current boundaries for dragging (inside viewport with margin)
-  function getBoundaries(container) {
-    const width = container.offsetWidth;
-    const height = container.offsetHeight;
-
-    return {
-      left: boundaries.left,
-      top: boundaries.top,
-      right: window.innerWidth - width - boundaries.right,
-      bottom: window.innerHeight - height - boundaries.bottom
-    };
-  }
-
-  // Initialize all images with random positions inside boundaries
-  imageContainers.forEach(container => {
-    const boundaries = getBoundaries(container);
-
-    // Randomize initial position within boundaries
-    const x = Math.random() * (boundaries.right - boundaries.left) + boundaries.left;
-    const y = Math.random() * (boundaries.bottom - boundaries.top) + boundaries.top;
-
-    container.style.position = 'absolute';
-    container.style.left = `${x}px`;
-    container.style.top = `${y}px`;
-    container.style.cursor = 'grab';
-    container.style.opacity = '1';
-    container.style.zIndex = '1';
-  });
-
-  // Variables to track dragging state
-  let dragged = null;
-  let startX = 0;
-  let startY = 0;
-  let origX = 0;
-  let origY = 0;
-
-  // Mouse down on any container: start dragging
-  imageContainers.forEach(container => {
-    container.addEventListener('mousedown', e => {
-      dragged = container;
-      startX = e.clientX;
-      startY = e.clientY;
-
-      // Get current position numbers (parseFloat to convert "px" to number)
-      origX = parseFloat(dragged.style.left);
-      origY = parseFloat(dragged.style.top);
-
-      dragged.style.cursor = 'grabbing';
-      zIndexCounter++;
-      dragged.style.zIndex = zIndexCounter;
-
-      e.preventDefault();
-    });
-
-   container.addEventListener('dragstart', e => e.preventDefault());
-  });
-
-  // Mouse move on document: if dragging, move the dragged element
-  document.addEventListener('mousemove', e => {
-     if (!dragged) return;
-      const dx = e.clientX - startX;
-      const dy = e.clientY - startY;
-
-      let newX = origX + dx;
-      let newY = origY + dy;
-
-      // Get boundaries for dragged container
-      const boundaries = getBoundaries(dragged);
-
-      // Clamp new position within boundaries
-      if (newX < boundaries.left) newX = boundaries.left;
-      if (newY < boundaries.top) newY = boundaries.top;
-      if (newX > boundaries.right) newX = boundaries.right;
-      if (newY > boundaries.bottom) newY = boundaries.bottom;
-
-      // Apply new position
-      dragged.style.left = `${newX}px`;
-      dragged.style.top = `${newY}px`;
-
-      e.preventDefault();
-      });
-
-  // Mouse up anywhere: stop dragging
-  document.addEventListener('mouseup', () => {
-    if (dragged) {
-      dragged.style.cursor = 'grab';
-      dragged = null;
-    }
-  });
-
-  // On window resize, reposition images inside boundaries if outside
-  window.addEventListener('resize', () => {
     imageContainers.forEach(container => {
-      const boundaries = getBoundaries(container);
+        let isDragging = false;
+        let startX, startY, initialLeft, initialTop;
 
-      let left = parseFloat(container.style.left);
-      let top = parseFloat(container.style.top);
+        // Randomize initial position
 
-      if (left < boundaries.left) left = boundaries.left;
-      if (top < boundaries.top) top = boundaries.top;
-      if (left > boundaries.right) left = boundaries.right;
-      if (top > boundaries.bottom) top = boundaries.bottom;
+            // Generate proposed position for the image
 
-      container.style.left = `${left}px`;
-      container.style.top = `${top}px`;
-    });
+            let x = Math.random() * (window.innerWidth - container.width);
+            let y = Math.random() * (window.innerHeight - container.height);
+
+            // Validate the the image will be placed inside the bounds, and update the proposed position otherwise
+            if (!isMobile && x < leftBoundary) x = leftBoundary;
+            if (isMobile && x < 0) x = 0;  
+            if (y < topBoundary) y = topBoundary;
+            if (x + container.width > viewportWidth - rightBoundary) {
+                x = viewportWidth - container.width - rightBoundary;
+            }
+            if (y + container.height > viewportHeight - bottomBoundary) {
+                y = viewportHeight - container.height - bottomBoundary;
+            }
+            container.style.left = `${x}px`;
+            container.style.top = `${y}px`;
+            container.style.opacity ='1'
+
+    function dragStart(e) {
+      e.preventDefault();
+      isDragging = true;
+      if (e.type === 'touchstart') {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+      } else {
+        startX = e.clientX;
+        startY = e.clientY;
+      }
+      initialLeft = parseFloat(window.getComputedStyle(container).left) || 0;
+      initialTop = parseFloat(window.getComputedStyle(container).top) || 0;
+      container.style.cursor = 'grabbing';
+      zIndexCounter += 1;
+      container.style.zIndex = `${zIndexCounter}`;
+    }
+
+    function dragMove(e) {
+      if (!isDragging) return;
+      e.preventDefault();
+
+      const clientX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+      const clientY = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
+
+      const offsetX = clientX - startX;
+      const offsetY = clientY - startY;
+
+      let newLeft = initialLeft + offsetX;
+      let newTop = initialTop + offsetY;
+
+      const containerRect = container.getBoundingClientRect();
+
+      // Only apply boundaries if NOT mobile (or customize boundaries for mobile here)
+      if (!isMobile) {
+        if (newLeft < leftBoundary) newLeft = leftBoundary;
+        if (newTop < topBoundary) newTop = topBoundary;
+        if (newLeft + containerRect.width > viewportWidth - rightBoundary) {
+          newLeft = viewportWidth - containerRect.width - rightBoundary;
+        }
+        if (newTop + containerRect.height > viewportHeight - bottomBoundary) {
+          newTop = viewportHeight - containerRect.height - bottomBoundary;
+        }
+        } else {
+    // Mobile: constrain within viewport edges, but top respects topBoundary
+    if (newLeft < 0) newLeft = 0;
+    if (newTop < topBoundary) newTop = topBoundary;
+    if (newLeft + containerRect.width > viewportWidth) {
+      newLeft = viewportWidth - containerRect.width;
+    }
+    if (newTop + containerRect.height > viewportHeight) {
+      newTop = viewportHeight - containerRect.height;
+    }
+      }
+
+      container.style.left = `${newLeft}px`;
+      container.style.top = `${newTop}px`;
+    }
+
+    function dragEnd(e) {
+      if (isDragging) {
+        isDragging = false;
+        container.style.cursor = 'grab';
+      }
+    }
+
+    // Attach mouse and touch event listeners
+
+    container.addEventListener('mousedown', dragStart);
+    container.addEventListener('touchstart', dragStart, { passive: false });
+
+    document.addEventListener('mousemove', dragMove);
+    document.addEventListener('touchmove', dragMove, { passive: false });
+
+    document.addEventListener('mouseup', dragEnd);
+    document.addEventListener('touchend', dragEnd);
+
+    container.addEventListener('contextmenu', e => e.preventDefault());
   });
-
-const subtitleBox = document.querySelector('.subtitle-container');
-const subtitleText = document.getElementById('subtitle-text');
 
 imageContainers.forEach(container => {
   // Show subtitle on hover (desktop)
