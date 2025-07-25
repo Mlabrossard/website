@@ -201,18 +201,23 @@
     @media (max-width: 600px) {
       .navigation {
         flex-direction: column; /* Stack items vertically on small screens */
-        align-items: center;
+        align-items: center;   
+        background: rgba(255, 255, 255, 0.6); /* light blur on mobile only */
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
       }
+
       .navigation .nav-links {
         flex-direction: column; /* Stack links vertically on small screens */
         align-items: center;
         gap: 10px; /* Adjust gap for smaller screens */
       }
+
       .navigation a {
         font-size: 16px; /* Smaller font size for smaller screens */
       }
 
-       .menu-toggle {
+      .menu-toggle {
         display: block;
         position: fixed;
         left: 10px;
@@ -275,7 +280,7 @@
       .grid-wrapper {
         margin-left: 0;
         width: 100%;
-        margin-top: 220px;
+        margin-top: 200px;
         padding: 0 10px;
         justify-content: center;
       }
