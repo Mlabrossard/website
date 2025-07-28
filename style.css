@@ -321,8 +321,8 @@ color: rgb(131, 0, 22); /* Ensure color remains red when link is clicked */
 
       .text-container {
       overflow: visible;
-      width: 90vw;
-      max-width: 90vw;
+      width: 50vw;
+      max-width: 50vw;
       max-height: none;
       }
 
