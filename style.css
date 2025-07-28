@@ -222,6 +222,12 @@ color: rgb(131, 0, 22); /* Ensure color remains red when link is clicked */
     text-decoration: none;
 }
 
+.text-container .credit {
+    font-size: 0.8em;       /* or try 0.85em */
+    line-height: 1.4;
+    text-align: left;
+  }
+
 .subtitle {
   font-size: 14px;
   font-style: italic;
