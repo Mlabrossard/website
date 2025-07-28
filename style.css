@@ -326,6 +326,13 @@ color: rgb(131, 0, 22); /* Ensure color remains red when link is clicked */
       max-height: none;
       }
 
+    .text-container p {
+    max-width: 35ch;       /* ✅ narrower paragraphs */
+    margin: 0 auto 1em;    /* ✅ center the text block */
+    text-align: left;
+    line-height: 1.5;
+  }
+
   .boundary {
     display: none !important; /* hide boundaries only on mobile */
   }
