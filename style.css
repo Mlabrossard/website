@@ -341,7 +341,7 @@ color: rgb(131, 0, 22); /* Ensure color remains red when link is clicked */
 
   .text-container p.credit {
     font-size: 0.6em;       /* or try 0.85em */
-    max-width: 35ch;
+    max-width: 55ch;
     text-align: left;
   }
 
