@@ -178,7 +178,10 @@ color: rgb(131, 0, 22); /* Ensure color remains red when link is clicked */
     transition: box-shadow 0.1s ease;
     padding: 10px 15px;
     width: 300px; /* Fixed width */
-    height: max-content; /* Fixed height */
+    height: auto;
+    max-width: 90vw;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
     background-color: rgba(255, 255, 255, 0.9);
     border: 0;
     backdrop-filter: blur(1%);
@@ -190,29 +193,29 @@ color: rgb(131, 0, 22); /* Ensure color remains red when link is clicked */
     }
 .text-container p {
     margin: 0;
-    width: 90%; /* Ensure image fits the container width */
-    height: 90%; /* Ensure image fits the container height */
+    width: 100%; /* Ensure image fits the container width */
+    height: auto; /* Ensure image fits the container height */
     object-fit: fill;
-    overflow: hidden;
-    white-space: wrap;
+    overflow: visible;
+    white-space: normal;
     margin-bottom: 1em;
     }
 .text-container h4 {
     margin: 0;
-    width: 90%; /* Ensure image fits the container width */
-    height: 90%; /* Ensure image fits the container height */
+    width: 100%; /* Ensure image fits the container width */
+    height: auto; /* Ensure image fits the container height */
     object-fit: fill;
-    overflow: hidden;
-    white-space: wrap;
+    overflow: visible;
+    white-space: normal;
     margin-bottom: 1em;
 }
 .text-container a {
     margin: 0;
-    width: 90%; /* Ensure image fits the container width */
-    height: 90%; /* Ensure image fits the container height */
+    width: 100; /* Ensure image fits the container width */
+    height: auto; /* Ensure image fits the container height */
     object-fit: fill;
-    overflow: hidden;
-    white-space: wrap;
+    overflow: visible;
+    white-space: normal;
     color: #333;
     font-weight: bold;
     margin-bottom: 1em;
@@ -240,7 +243,7 @@ color: rgb(131, 0, 22); /* Ensure color remains red when link is clicked */
         font-size: 16px; /* Smaller font size for smaller screens */
       }
 
-            .menu-toggle {
+      .menu-toggle {
         display: block;
         position: fixed;
         left: 10px;
@@ -306,7 +309,7 @@ color: rgb(131, 0, 22); /* Ensure color remains red when link is clicked */
         overflow: visible; /* allow scrolling */
       }
 
-        .image-container {
+      .image-container {
         /*position: static !important; /* cancel absolute on mobile */
     width: 90vw !important;
     max-width: 40%;
@@ -316,9 +319,12 @@ color: rgb(131, 0, 22); /* Ensure color remains red when link is clicked */
     /*cursor: default !important; /* disable grab cursor */
       }/* Adjust navigation layout (you already did) */
 
-        .text-container {
-          overflow: visible;
-          }
+      .text-container {
+      overflow: visible;
+      width: 90vw;
+      max-width: 90vw;
+      max-height: none;
+      }
 
   .boundary {
     display: none !important; /* hide boundaries only on mobile */
