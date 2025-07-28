@@ -345,6 +345,13 @@ color: rgb(131, 0, 22); /* Ensure color remains red when link is clicked */
     text-align: left;
   }
 
+  @supports (-webkit-touch-callout: none) {
+  .text-container .credit {
+    text-align: left !important;
+  }
+}
+
+
   .boundary {
     display: none !important; /* hide boundaries only on mobile */
   }
