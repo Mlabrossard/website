@@ -339,10 +339,11 @@ color: rgb(131, 0, 22); /* Ensure color remains red when link is clicked */
     line-height: 1.5;
   }
 
-  .text-container .credit {
-    font-size: 0.4em;       /* or try 0.85em */
-    line-height: 1.4;
-    text-align: left;
+  .text-container p.credit {
+    font-size: 0.8em;       /* or try 0.85em */
+    max-width: 20ch;
+    margin: 0 auto 1em;
+    text-align: center;
   }
 
   .boundary {
