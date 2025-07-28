@@ -340,10 +340,9 @@ color: rgb(131, 0, 22); /* Ensure color remains red when link is clicked */
   }
 
   .text-container p.credit {
-    font-size: 0.8em;       /* or try 0.85em */
-    max-width: 20ch;
-    margin: 0 auto 1em;
-    text-align: center;
+    font-size: 0.6em;       /* or try 0.85em */
+    max-width: 35ch;
+    text-align: left;
   }
 
   .boundary {
