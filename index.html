@@ -368,25 +368,25 @@ window.onload = () => {
     container.addEventListener('contextmenu', e => e.preventDefault());
   });
 
-imageContainers.forEach(container => {
+//imageContainers.forEach(container => {
   // Show subtitle on hover (desktop)
-  container.addEventListener('mouseenter', () => {
-    subtitleText.textContent = container.alt || '';
-    subtitleBox.style.opacity = 1;
-  });
+  //container.addEventListener('mouseenter', () => {
+   // subtitleText.textContent = container.alt || '';
+   // subtitleBox.style.opacity = 1;
+ // });
 
-  container.addEventListener('mouseleave', () => {
-    subtitleBox.style.opacity = 0;
-  });
+  //container.addEventListener('mouseleave', () => {
+   // subtitleBox.style.opacity = 0;
+ // });
 
   // Show subtitle on touch (mobile)
-  container.addEventListener('touchstart', () => {
-  if (isMobileView()) {
-    subtitleText.textContent = container.alt || '';
-    subtitleBox.style.opacity = 1;
-  }
-});
-});
+ // container.addEventListener('touchstart', () => {
+  //if (isMobileView()) {
+    //subtitleText.textContent = container.alt || '';
+   // subtitleBox.style.opacity = 1;
+ // }
+//});
+//});
 }
   </script>
 

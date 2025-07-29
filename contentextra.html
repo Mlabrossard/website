@@ -78,25 +78,36 @@
     const textContainer = document.querySelector('.text-container');
     const imageContainers = document.querySelectorAll('.image-container');
 
-    if (!textContainer) return; // Don't run unless it's the right page
+    if (!textContainer) return;
+
+    function showSubtitle(container) {
+      const existing = textContainer.querySelector('.subtitle');
+      if (existing) existing.remove();
+
+      const subtitle = document.createElement('p');
+      subtitle.className = 'subtitle';
+      subtitle.textContent = container.alt;
+      textContainer.appendChild(subtitle);
+    }
+
+    function removeSubtitle() {
+      const existing = textContainer.querySelector('.subtitle');
+      if (existing) existing.remove();
+    }
 
     imageContainers.forEach(container => {
-      container.addEventListener('mouseenter', () => {
-        const subtitle = document.createElement('p');
-        subtitle.className = 'subtitle';
-        subtitle.textContent = container.alt;
-        textContainer.appendChild(subtitle);
-      });
+      // Desktop hover
+      container.addEventListener('mouseenter', () => showSubtitle(container));
+      container.addEventListener('mouseleave', removeSubtitle);
 
-      container.addEventListener('mouseleave', () => {
-        const existing = textContainer.querySelector('.subtitle');
-        if (existing) existing.remove();
-      });
+      // Mobile touch
+      container.addEventListener('touchstart', () => showSubtitle(container), { passive: true });
+      container.addEventListener('touchend', () => {
+        setTimeout(removeSubtitle, 1000); // Let it stay visible for a moment
+      }, { passive: true });
 
-      container.addEventListener('mouseup', () => {
-        const existing = textContainer.querySelector('.subtitle');
-        if (existing) existing.remove();
-      });
+      // Also clear on mouseup (desktop)
+      container.addEventListener('mouseup', removeSubtitle);
     });
   });
 </script>
