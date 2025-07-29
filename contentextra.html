@@ -103,7 +103,7 @@
       // Mobile touch
       container.addEventListener('touchstart', () => showSubtitle(container), { passive: true });
       container.addEventListener('touchend', () => {
-        setTimeout(removeSubtitle, 1000); // Let it stay visible for a moment
+        setTimeout(removeSubtitle, 2000); // Let it stay visible for a moment
       }, { passive: true });
 
       // Also clear on mouseup (desktop)
