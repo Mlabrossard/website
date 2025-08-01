@@ -40,11 +40,7 @@ window.onload = () => {
             container.style.opacity ='1'
 
     function dragStart(e) {
-        const target = e.target;
-  if (target.tagName === 'A' || target.closest('a')) {
-    // Let the link behave normally
-    return;
-  }
+
       e.preventDefault();
       isDragging = true;
       if (e.type === 'touchstart') {
@@ -162,6 +158,11 @@ window.onload = () => {
             container.style.opacity ='1'
 
     function dragStart(e) {
+              const target = e.target;
+  if (target.tagName === 'A' || target.closest('a')) {
+    // Let the link behave normally
+    return;
+  }
       e.preventDefault();
       isDragging = true;
       if (e.type === 'touchstart') {
