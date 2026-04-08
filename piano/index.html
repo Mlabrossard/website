@@ -109,9 +109,24 @@ body {
 			<div id="status-notice"></div>
 		</div>
 
+		<script>
+if (!window.crossOriginIsolated && 'serviceWorker' in navigator) {
+    navigator.serviceWorker.register('coi-serviceworker.js').then(function(reg) {
+        if (reg.installing || reg.waiting) {
+            window.location.reload();
+        } else if (reg.active) {
+            // Already installed but page wasn't loaded through it — reload to activate
+            if (!sessionStorage.getItem('coiReloaded')) {
+                sessionStorage.setItem('coiReloaded', '1');
+                window.location.reload();
+            }
+        }
+    });
+}
+		</script>
 		<script src="index.js"></script>
 		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"piano/index.pck":243293892,"piano/index.wasm":37695054},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":243293892,"index.wasm":37695054},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
 const GODOT_THREADS_ENABLED = false;
 const engine = new Engine(GODOT_CONFIG);
 

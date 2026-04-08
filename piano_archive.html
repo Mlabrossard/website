@@ -117,6 +117,19 @@
   </div>
 
   <script>
+    if (!window.crossOriginIsolated && 'serviceWorker' in navigator) {
+      navigator.serviceWorker.register('coi-serviceworker.js').then(function(reg) {
+        if (reg.installing || reg.waiting) {
+          window.location.reload();
+        } else if (reg.active) {
+          if (!sessionStorage.getItem('coiReloaded')) {
+            sessionStorage.setItem('coiReloaded', '1');
+            window.location.reload();
+          }
+        }
+      });
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       console.log('Page loaded');
     });
